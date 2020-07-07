@@ -44,5 +44,8 @@
   "bugs": {
     "url": "https://github.com/MolochVentures/moloch/issues"
   },
-  "homepage": "https://github.com/MolochVentures/moloch#readme"
+  "homepage": "https://github.com/MolochVentures/moloch#readme",
+  "dependencies": {
+    "ganache-time-traveler": "^1.0.14"
+  }
 }

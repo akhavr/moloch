@@ -15,11 +15,19 @@ const ETHERSCAN_API_KEY = "";
 module.exports = {
   networks: {
     develop: {
-      url: "http://localhost:8545",
-      deployedContracts: {
-        moloch: "",
-        pool: ""
-      }
+	url: "http://localhost:8545",
+	//url: "http://localhost:8546",
+	timeout: 200000,
+	deployedContracts: {
+            moloch: "0x9Fd6b308b593Ba02a5DbCfEF0F30fbBcA8B79B91",
+            pool: ""
+	},
+	reconnect: {
+	    auto: true,
+	    delay: 5000,
+	    maxAttempts: 5,
+	    onTimeout: false
+	},
     },
     ropsten: {
       url: `https://ropsten.infura.io/v3/${INFURA_API_KEY}`,

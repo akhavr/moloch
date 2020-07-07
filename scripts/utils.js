@@ -43,8 +43,12 @@ async function getApprovedToken () {
     return
   }
 
-  const IERC20 = artifacts.require('IERC20')
-  const tokenAddress = await moloch.approvedToken()
+    const IERC20 = artifacts.require('IERC20')
+    console.log('Deposit token:', await moloch.depositToken())
+    console.log('# of approved tokens:', (await moloch.getTokenCount()).toString())
+    approvedToken = await moloch.approvedTokens(0)
+    console.log('1st approved token:', approvedToken)
+  const tokenAddress = await moloch.approvedTokens(0)
 
   return IERC20.at(tokenAddress)
 }
@@ -75,7 +79,9 @@ async function hasEnoughAllowance (tokenContract, allowanceGiver, receiverContra
 }
 
 async function hasEnoughTokens (tokenContract, tokensOwner, amount) {
-  const balance = await tokenContract.balanceOf(tokensOwner)
+    const balance = await tokenContract.balanceOf(tokensOwner)
+    console.log('Your balance:', balance.toString())
+    console.log('Required amount:', amount.toString())
   return balance.gte(new BN(amount))
 }
 
